@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Não levar o android.jar copiado (27 MB) nem logs de crash -->
+    <exclude domain="file" path="run/"/>
+    <exclude domain="file" path="run/android.jar"/>
+    <exclude domain="file" path="run/lambda_stub.jar"/>
+    <exclude domain="file" path="crash-"/>
+    <exclude domain="external" path="crash-"/>
+</full-backup-content>

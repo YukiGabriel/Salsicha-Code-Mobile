@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="salsicha_accent">#E8A33D</color>
+    <color name="salsicha_accent_soft">#3A2C1A</color>
+    <color name="bg_dark">#171114</color>
+    <color name="surface_dark">#241A1E</color>
+    <color name="surface_dark2">#2C2126</color>
+    <color name="text_dark">#FFF9F7</color>
+    <color name="muted_dark">#A89B9E</color>
+    <color name="bg_light">#FFF9F7</color>
+    <color name="surface_light">#F1E8E4</color>
+    <color name="surface_light2">#E9DCD6</color>
+    <color name="text_light">#2B2124</color>
+    <color name="muted_light">#8A7F85</color>
+    <color name="success">#4ADE80</color>
+    <color name="error">#FF6B6B</color>
+</resources>

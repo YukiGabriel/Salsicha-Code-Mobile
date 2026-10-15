@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#171114"
+    android:padding="32dp">
+
+    <FrameLayout
+        android:id="@+id/splashLogoBox"
+        android:layout_width="128dp"
+        android:layout_height="128dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash_ring"
+            android:alpha="0.35" />
+
+        <ImageView
+            android:id="@+id/splashLogo"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="Salsicha Code" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="🌭 Salsicha Code"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFF9F7"
+        android:fontFamily="monospace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Java on-device • ECJ + D8"
+        android:textSize="13sp"
+        android:textColor="#A89B9E"
+        android:fontFamily="monospace" />
+
+    <ProgressBar
+        android:id="@+id/splashBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:max="100"
+        android:progress="15"
+        android:progressTint="#E8A33D"
+        android:progressBackgroundTint="#33262B" />
+
+    <TextView
+        android:id="@+id/splashMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Aquecendo o forno…"
+        android:textSize="12sp"
+        android:textColor="#A89B9E"
+        android:fontFamily="monospace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="v2.4 • feito com mostarda e Java"
+        android:textSize="11sp"
+        android:textColor="#5A4A4E"
+        android:fontFamily="monospace" />
+
+</LinearLayout>

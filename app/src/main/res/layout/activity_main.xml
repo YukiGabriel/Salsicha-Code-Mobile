@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:orientation="vertical"
+    android:background="#171114"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- AppBar moderna -->
+    <LinearLayout
+        android:id="@+id/appbar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/apptitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌭 Salsicha Code"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFF9F7"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:id="@+id/appsubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Java on-device • ECJ + D8"
+                android:textSize="11sp"
+                android:textColor="#A89B9E"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/runFab"
+            style="@style/RunButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▶ Run" />
+    </LinearLayout>
+
+    <!-- Ferramentas -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:showDividers="none" />
+    </HorizontalScrollView>
+
+    <!-- Abas -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingBottom="6dp">
+        <LinearLayout
+            android:id="@+id/tabstrip"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+    </HorizontalScrollView>
+
+    <!-- Editor em card -->
+    <LinearLayout
+        android:id="@+id/editorCard"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bg_editor_card"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/gutter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="44dp"
+            android:gravity="end"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:scrollbars="none"
+            android:textColor="#A89B9E"
+            android:fontFamily="monospace"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#33262B"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <HorizontalScrollView
+            android:id="@+id/editorHScroll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="horizontal"
+            android:overScrollMode="ifContentScrolls">
+
+            <com.salsicha.code.CodeEditText
+                android:id="@+id/editor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:padding="10dp"
+                android:gravity="top|start"
+                android:fontFamily="monospace"
+                android:textSize="15sp"
+                android:textColor="#FFF9F7"
+                android:textColorHint="#A89B9E"
+                android:hint="public class Main {&#10;    …"
+                android:inputType="textMultiLine|textVisiblePassword"
+                android:imeOptions="flagNoExtractUi|flagNoFullscreen"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="true"
+                android:overScrollMode="ifContentScrolls"
+                android:singleLine="false" />
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Sugestões inline (não cobre o teclado) -->
+    <HorizontalScrollView
+        android:id="@+id/suggestBarScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:visibility="gone"
+        android:paddingTop="6dp"
+        android:paddingBottom="2dp">
+        <LinearLayout
+            android:id="@+id/suggestBar"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp" />
+    </HorizontalScrollView>
+
+    <!-- Console em card inferior -->
+    <LinearLayout
+        android:id="@+id/consolebox"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_console_card"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/consoletitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:textColor="#A89B9E"
+                android:text="● Console" />
+
+            <Button
+                android:id="@+id/consoleclear"
+                style="@style/BarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🗑" />
+            <Button
+                android:id="@+id/consolestop"
+                style="@style/BarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏹" />
+            <Button
+                android:id="@+id/consolehide"
+                style="@style/BarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✕" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/consoleScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="280dp"
+            android:minHeight="120dp"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            android:overScrollMode="always">
+            <TextView
+                android:id="@+id/console"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:textColor="#FFF9F7"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textIsSelectable="false" />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/consoleInputRow"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp">
+
+            <EditText
+                android:id="@+id/consoleInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="⌨ digite a entrada + Enviar…"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:textColor="#FFF9F7"
+                android:textColorHint="#A89B9E"
+                android:background="@drawable/bg_pill"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:inputType="text"
+                android:imeOptions="actionSend"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/consoleSend"
+                style="@style/RunButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Enviar" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Símbolos -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp">
+        <LinearLayout
+            android:id="@+id/symbolbar"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="10dp"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:textColor="#A89B9E" />
+
+</LinearLayout>

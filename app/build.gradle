@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.salsicha.code'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.salsicha.code'
+        minSdk 26
+        targetSdk 35
+        versionCode 7
+        versionName '2.4'
+    }
+
+    signingConfigs {
+        // Só p/ teste local: release assinado com chave debug.
+        // Na Play, trocar por keystore próprio.
+        release {
+            storeFile file("${System.getProperty('user.home')}/.android/debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+        release {
+            minifyEnabled false // ECJ + R8 via reflexão: shrink quebra o Run
+            shrinkResources false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA',
+                'META-INF/DEPENDENCIES', 'META-INF/LICENSE*',
+                'META-INF/NOTICE*', 'META-INF/README*']
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+    // v2.1: compilador Java on-device (ECJ) + dexer (D8 via R8)
+    // Carregados SOMENTE via reflexão no RunManager (nunca na abertura).
+    // ./gradlew :app:assembleDebug -PliteMode gera APK leve sem eles (Run avisa).
+    if (!project.hasProperty('liteMode')) {
+        implementation 'org.eclipse.jdt:ecj:3.30.0'
+        implementation 'com.android.tools:r8:8.13.23'
+    }
+}
